@@ -35,44 +35,97 @@ import '@/styles/globals.css';
       </div>
       <form method='post' novalidate>
         <div
-          class='formBox flex h-[27.625rem] w-[20.4375rem] flex-col gap-4 rounded-[0.625rem] bg-white p-6 md:h-[33.75rem] md:w-[33.75rem] md:gap-5 md:p-10'
+          class='formBox flex h-[35.625rem] w-[20.4375rem] flex-col gap-4 rounded-[0.625rem] bg-white p-6 md:h-[36.75rem] md:w-[33.75rem] md:gap-5 md:p-10'
         >
-          <label for='firstName'
-            ><input
+          <!-- FirstName -->
+          <div class='relative flex flex-col items-end justify-end'>
+            <input
               type='text'
               id='firstName'
               name='firstName'
               placeholder='First Name'
               class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
-            /></label
-          >
-          <label for='lastName'
-            ><input
+            />
+            <img
+              src='/public/images/icon-error.svg'
+              alt='erroricon'
+              class='errorIcon absolute right-3 top-[1.063rem] hidden'
+            />
+            <h3
+              class='mt-2 hidden text-[0.6875rem] font-medium italic leading-normal text-[#FF7979]'
+              id='emptyMsgFirstName'
+            >
+              First Name cannot be empty
+            </h3>
+          </div>
+          <!-- LastName  -->
+          <div class='relative flex flex-col items-end justify-end'>
+            <input
               type='text'
               id='lastName'
               name='lastName'
               placeholder='Last Name'
               class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
-            /></label
-          >
-          <label for='userEmail'
-            ><input
+            />
+            <img
+              src='/public/images/icon-error.svg'
+              alt='error icon'
+              class='errorIcon absolute right-3 top-[1.063rem] hidden'
+            />
+            <h3
+              class='mt-2 hidden text-[0.6875rem] font-medium italic leading-normal text-[#FF7979]'
+              id='emptyMsgLastName'
+            >
+              Last Name cannot be empty
+            </h3>
+          </div>
+          <div class='relative flex flex-col items-end justify-end'>
+            <input
               type='email'
               id='userEmail'
               name='userEmail'
               placeholder='Email Address'
               class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
-            /></label
-          >
-          <label for='userPass'
-            ><input
+            />
+            <img
+              src='/public/images/icon-error.svg'
+              alt='error icon'
+              class='errorIcon absolute right-3 top-[1.063rem] hidden'
+            />
+            <h3
+              class='mt-2 hidden text-[0.6875rem] font-medium italic leading-normal text-[#FF7979]'
+              id='emptyMsgEmail'
+            >
+              Email Address cannot be empty
+            </h3>
+            <h3
+              class='mt-2 hidden text-[0.6875rem] font-medium italic leading-normal text-[#FF7979]'
+              id='wrongMsgEmail'
+            >
+              Looks like this is not an email
+            </h3>
+          </div>
+          <!-- PassWord -->
+          <div class='relative flex flex-col items-end justify-end'>
+            <input
               type='password'
               id='userPass'
               name='userPass'
               placeholder='Password'
               class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
-            /></label
-          >
+            />
+            <img
+              src='/public/images/icon-error.svg'
+              alt='error icon'
+              class='errorIcon absolute right-3 top-[1.063rem] hidden'
+            />
+            <h3
+              class='mt-2 hidden text-[0.6875rem] font-medium italic leading-normal text-[#FF7979]'
+              id='emptyMsgPassword'
+            >
+              Password cannot be empty
+            </h3>
+          </div>
           <button
             type='submit'
             class='claimBox h-14 w-[17.4375rem] rounded-[0.3125rem] bg-[#38CC8B] text-[0.9375rem] font-semibold uppercase leading-relaxed tracking-[0.0625rem] text-white md:w-[28.75rem]'
@@ -104,3 +157,75 @@ import '@/styles/globals.css';
     box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.09) inset;
   }
 </style>
+
+<script is:inline>
+  const form = document.querySelector('form');
+  const firstNameInput = document.getElementById('firstName');
+  const lastNameInput = document.getElementById('lastName');
+  const emailInput = document.getElementById('userEmail');
+  const passwordInput = document.getElementById('userPass');
+
+  const firstNameError = document.getElementById('emptyMsgFirstName');
+  const lastNameError = document.getElementById('emptyMsgLastName');
+  const emailError = document.getElementById('emptyMsgEmail');
+  const emailFormatError = document.getElementById('wrongMsgEmail');
+  const passwordError = document.getElementById('emptyMsgPassword');
+
+  const errorIcons = document.querySelectorAll('.errorIcon');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let isValid = true;
+
+    // Reset error messages and icons
+    firstNameError.classList.add('hidden');
+    lastNameError.classList.add('hidden');
+    emailError.classList.add('hidden');
+    emailFormatError.classList.add('hidden');
+    passwordError.classList.add('hidden');
+    errorIcons.forEach((icon) => icon.classList.add('hidden'));
+
+    // Validate first name
+    if (firstNameInput.value.trim() === '') {
+      firstNameError.classList.remove('hidden');
+      firstNameInput.nextElementSibling.classList.remove('hidden');
+      isValid = false;
+    }
+
+    // Validate last name
+    if (lastNameInput.value.trim() === '') {
+      lastNameError.classList.remove('hidden');
+      lastNameInput.nextElementSibling.classList.remove('hidden');
+      isValid = false;
+    }
+
+    // Validate email
+    if (emailInput.value.trim() === '') {
+      emailError.classList.remove('hidden');
+      emailInput.nextElementSibling.classList.remove('hidden');
+      isValid = false;
+    } else if (!isValidEmail(emailInput.value)) {
+      emailFormatError.classList.remove('hidden');
+      emailInput.nextElementSibling.classList.remove('hidden');
+      isValid = false;
+    }
+
+    // Validate password
+    if (passwordInput.value.trim() === '') {
+      passwordError.classList.remove('hidden');
+      passwordInput.nextElementSibling.classList.remove('hidden');
+      isValid = false;
+    }
+
+    if (isValid) {
+      // Submit the form if all fields are valid
+      form.submit();
+    }
+  });
+
+  function isValidEmail(email) {
+    // Simple email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+</script>

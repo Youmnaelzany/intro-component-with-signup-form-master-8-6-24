@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '@/styles/globals.css';
+---
+
+<Layout title='Intro component with sign up form.'>
+  <main
+    class='mx-6 mb-[4.25rem] mt-[5.5rem] flex flex-col gap-16 md:mx-[10.31rem] md:my-[7.56rem] md:flex-row md:items-center md:justify-between md:gap-[2.81rem]'
+  >
+    <section
+      class='flex flex-col items-center justify-center gap-4 text-center md:items-start md:text-left'
+    >
+      <h1
+        class='fonnt-bold w-[20.4375rem] text-[1.75rem] leading-9 tracking-[-0.01825rem] text-white md:w-[32.8125rem] md:text-[3.125rem] md:leading-[3.4375rem] md:tracking-[-0.03256rem]'
+      >
+        Learn to code by watching others
+      </h1>
+      <p
+        class='w-[20.4375rem] text-base font-medium leading-relaxed text-white md:w-[32.8125rem]'
+      >
+        See how experienced developers solve problems in real-time. Watching
+        scripted tutorials is great, but understanding how developers think is
+        invaluable.
+      </p>
+    </section>
+    <section class='flex flex-col gap-6'>
+      <div
+        class='tryBox flex h-[5.5rem] w-[20.4375rem] items-center justify-center rounded-[0.625rem] bg-[#5E54A4] text-center md:h-14 md:w-[33.75rem]'
+      >
+        <h2
+          class='w-[12.125rem] text-[0.9375rem] font-normal leading-relaxed tracking-[0.01675rem] text-white md:w-[20.75rem]'
+        >
+          <span class='font-bold'>Try it free 7 days</span> then $20/mo. thereafter
+        </h2>
+      </div>
+      <form method='post' novalidate>
+        <div
+          class='formBox flex h-[27.625rem] w-[20.4375rem] flex-col gap-4 rounded-[0.625rem] bg-white p-6 md:h-[33.75rem] md:w-[33.75rem] md:gap-5 md:p-10'
+        >
+          <label for='firstName'
+            ><input
+              type='text'
+              id='firstName'
+              name='firstName'
+              placeholder='First Name'
+              class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
+            /></label
+          >
+          <label for='lastName'
+            ><input
+              type='text'
+              id='lastName'
+              name='lastName'
+              placeholder='Last Name'
+              class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
+            /></label
+          >
+          <label for='userEmail'
+            ><input
+              type='email'
+              id='userEmail'
+              name='userEmail'
+              placeholder='Email Address'
+              class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
+            /></label
+          >
+          <label for='userPass'
+            ><input
+              type='password'
+              id='userPass'
+              name='userPass'
+              placeholder='Password'
+              class='h-14 w-[17.4375rem] rounded-[0.3125rem] border border-solid border-[#DEDEDE] pl-[1.21rem] text-sm font-semibold leading-relaxed tracking-[0.01563rem] text-[#3D3B48] outline-none transition-colors duration-300 ease-in focus:border-[#5E54A4] md:w-[28.75rem]'
+            /></label
+          >
+          <button
+            type='submit'
+            class='claimBox h-14 w-[17.4375rem] rounded-[0.3125rem] bg-[#38CC8B] text-[0.9375rem] font-semibold uppercase leading-relaxed tracking-[0.0625rem] text-white md:w-[28.75rem]'
+            >Claim your free trial
+          </button>
+          <div
+            class='mx-auto mt-2 flex w-[15.5625rem] items-center justify-center text-center md:w-[23.9375rem]'
+          >
+            <h3
+              class='text-[0.6875rem] font-medium leading-[1.3125rem] text-[#BAB7D4]'
+            >
+              By clicking the button, you are agreeing to our <span
+                class='font-bold text-[#FF7979]'>Terms and Services</span
+              >
+            </h3>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+</Layout>
+
+<style is:inline>
+  .tryBox,
+  .formBox {
+    box-shadow: 0px 8px 0px 0px rgba(0, 0, 0, 0.15);
+  }
+  .claimBox {
+    box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.09) inset;
+  }
+</style>

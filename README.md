@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/Youmnaelzany/intro-component-with-signup-form-master-8-6-24.git)
+- Live Site URL: [Add live site URL here](https://signupform8624.netlify.app/)
 
 ### Built with
 
